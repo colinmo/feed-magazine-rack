@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <meta name="author" content="Colin Morris">
+    <title>Welcome | Professor von Explaino</title>
+    <link href="blog.css" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="https://vonexplaino.com/favicon.svg">
+    <link rel="icon" type="image/png" href="https://vonexplaino.com/favicon.png">
+</head>
+
+<body class="container">
+    <main id="professor-paper" class="panel">
+        <div id="top-left" class="decorative-tops"></div>
+        <div id="top-right" class="decorative-tops"></div>
+        <div id="bottom-left" class="decorative-tops"></div>
+        <div id="bottom-right" class="decorative-tops"></div>
+        <section id="magazine-rack">
+        </section>
+        <script src="feedly-magazine-rack.js"></script>
+    </main>
+    <section id="header">
+        <nav>
+            <a href="/" style="position:relative;"><img src="https://vonexplaino.com/theme/images/header-horizontal.png"
+                    style="height:60px;position:relative;top:30px;" alt="home" />Home</a><wbr><a
+                href="https://vonexplaino.com/blog">Blog</a><wbr><a
+                href="https://vonexplaino.com/blog/posts/page/steampunk.html">Steampunk</a><wbr><a
+                href="https://vonexplaino.com/blog/posts/page/code.html">Code</a><wbr><a
+                href="https://vonexplaino.com/blog/posts/resume/resume-of-colin-morris.html">Resume</a>
+        </nav>
+    </section>
+    <style>
+        #magazine-rack {
+            display: grid;
+            grid-gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-auto-rows: 400px;
+        }
+        .magazine-cover {
+            display: inline-grid;
+        }
+    </style>
+</body>
+
+</html>
