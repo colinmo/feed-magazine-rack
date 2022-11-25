@@ -21,12 +21,13 @@ class MagazineCover {
         if (entry.summary) {
             this.summary = entry.summary.content;
         } else if (entry.content) {
-            let doc = new DOMParser().parseFromString(entry.content.content, 'text/html');
-            this.summary = splitToLength(doc.body.textContent, 350) || "";
+            //let doc = new DOMParser().parseFromString(entry.content.content, 'text/html');
+            //this.summary = splitToLength(doc.body.textContent, 350) || "";
+            this.summary = entry.content.content;
         } else {
             this.summary = "";
         }
-        if (entry.visual) {
+        if (entry.visual && entry.visual.url != "none") {
             this.background = `background: gray url(${entry.visual.url}) no-repeat no-repeat center center;background-size: contain`;
             this.summary = "";
         } else {
@@ -41,10 +42,10 @@ class MagazineCover {
     }
     coverAsHTML() {
         return `
-        <div class="magazine-cover" style="${this.background};">
-            <h1>${this.title}</h1>
-            <div style="overflow:hidden;width=100%;height=100%;">${this.summary}</div>
-            <span class="author">${this.origin}</span>
+        <div class="magazine-cover">
+            <h1 class="author">${this.origin}</h1>
+            <div class="content" style="${this.background};">${this.summary}</div>
+            <p class="title">${this.title}</p>
         </div>`;
     }
 }
@@ -98,8 +99,8 @@ class FeedlyInterface {
         let feedJson = await this.getAllFeedsForUser();
         // feedJson = [feedJson[0]];
         const start = async () => {
-            await asyncForEach(feedJson, async (feedObj) => {
-                await this.getLatestArticleFor(feedObj.id).then((feed) => {
+             asyncForEach(feedJson, async (feedObj) => {
+                 this.getLatestArticleFor(feedObj.id).then((feed) => {
                     rack.addCover(feed);
                     rack.display();
                 })

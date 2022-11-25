@@ -33,13 +33,24 @@
     </section>
     <style>
         #magazine-rack {
+            --cover-small-size: 250px;
+            --cover-large-size: calc(var(--cover-small-size) * 1.4142135623730950488016887242097);
             display: grid;
             grid-gap: 20px;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            grid-auto-rows: 400px;
+            grid-template-columns: repeat(auto-fit, minmax(var(--cover-small-size), 1fr));
+            grid-template-rows: repeat(var(--cover-large-size));
         }
         .magazine-cover {
             display: inline-grid;
+            min-width: var(--cover-small-size);
+            min-height: var(--cover-large-size);
+        }
+        .magazine-cover .content {
+            overflow:hidden;
+            min-width: var(--cover-small-size);
+            min-height: calc(var(--cover-large-size) - 28px);
+            max-width: var(--cover-small-size);
+            max-height: calc(var(--cover-large-size) - 28px);
         }
     </style>
 </body>
